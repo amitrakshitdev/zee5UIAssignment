@@ -1,0 +1,57 @@
+.Show {
+    position: relative;
+    width: 90%;
+    height: 100%;
+    max-height: 100%;
+    margin: 0.5em;
+    justify-self: center;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    overflow: hidden;
+    transition: transform 0.2s linear;
+}
+.Show:hover{
+    transform: scale(1.1);
+}
+
+.Show-thumbnail {
+    position: relative;
+    width: 300px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #f2f; */
+    cursor: pointer;
+}
+.Show-thumbnail .thumbnail-img:active{
+    transform: scale(0.95);
+}
+
+.Show .Show-title {
+    position: relative;
+    font-size: 1em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+    max-width: 84%;
+    width: auto;
+    height: fit-content;
+    overflow: hidden;
+    text-align: left;
+    color: rgb(17, 17, 17);
+}
+
+.Show .Show-description {
+    position: relative;
+    font-size: 0.8em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    font-weight: 500;
+    width: 80%;
+    color: rgb(228, 228, 228);
+}
