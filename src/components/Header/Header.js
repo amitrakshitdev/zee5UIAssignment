@@ -28,19 +28,17 @@ class Header extends Component {
     }
     searchHandler(ev) {
         if (ev.key == "Enter" && ev.target.value.length > 2) {
+            this.props.appStateHandler({ loading: true });
             this.getSearchResult(ev.target.value).then(res => {
                 this.props.appStateHandler({
                     searchResult: res,
-                    searching: true
+                    searching: true,
+                    loading: false
                 });
+                let showsWrapperWindow = document.querySelector(".App-Showswrapper-window");
+                showsWrapperWindow.scroll({ top: 0 })
             });
         }
-        // else {
-        //     this.props.appStateHandler({
-        //         searchResult: [],
-        //         searching: false
-        //     });
-        // }
     }
     state = {}
     render() {

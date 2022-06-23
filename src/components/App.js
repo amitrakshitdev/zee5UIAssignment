@@ -13,7 +13,7 @@ class App extends Component {
     state = {
         searching: false,
         searchResult: [],
-        loading: true,
+        loading: false,
         apiData: [],
         startApiDataIndex: 0,
         endApiDataIndex: 10
@@ -49,13 +49,16 @@ class App extends Component {
         }
     }
     async onScrollHandler(ev) {
-        let showsWrapper = document.querySelector(".Showswrapper");
         let showsWrapperWindow = document.querySelector(".App-Showswrapper-window");
-        if (showsWrapperWindow.scrollTop + showsWrapperWindow.offsetHeight > showsWrapperWindow.scrollHeight * 0.9) {
-            this.handleLazyLoad();
+        if (!this.state.searching && showsWrapperWindow.scrollTop + showsWrapperWindow.offsetHeight > showsWrapperWindow.scrollHeight * 0.9) {
+            if (!this.state.loading) {
+                this.setState({ loading: true });
+                await this.handleLazyLoad();
+                this.setState({ loading: false });
+            }
         }
-
     }
+
     async componentDidMount() {
         let apiData = await this.getData(this.state.startApiDataIndex, this.state.endApiDataIndex);
         this.setState({ apiData: apiData });
@@ -70,7 +73,7 @@ class App extends Component {
         return (<div className="App">
             <Header appStateHandler={this.appStateHandler} />
             {this.state.searching ? <div className='back-to-home-button-wrapper'>
-                <button className='App-back-to-home-button' onClick={this.backButtonClickHandler}>Back to home</button>
+                <button className='App-back-to-home-button' onClick={this.backButtonClickHandler}>Back</button>
                 <h2 className='searchResults-text'>Search result(s) ... </h2>
             </div> : null}
             <div className='App-Showswrapper-window' onScroll={this.onScrollHandler}>
@@ -78,6 +81,12 @@ class App extends Component {
                     startApiDataIndex={this.state.startApiDataIndex} endApiDataIndex={this.state.endApiDataIndex}
                     searchResult={this.state.searchResult} searching={this.state.searching} />
             </div>
+            {this.state.loading ? <div className='App-loadingScreen'>
+                <svg width="100" height="100">
+                    {/* <circle cx="50" cy="50" r="40" stroke="#fff" stroke-width="4" fill='transparent' /> */}
+                    <path d="M5 50 A45 45 0 0 1 95 50" fill='transparent' stroke='#fff' strokeWidth={4} strokeLinecap={"round"} />
+                </svg>
+            </div> : null}
         </div>);
     }
 }

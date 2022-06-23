@@ -3,11 +3,12 @@
     min-height: 4em;
     height: 10%;
     width: 100%;
-    background-color: #ffe6c6;
-    margin-bottom: 1em;
+    background-color: #252525;
+    margin-bottom: 0.5em;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-bottom: 0.1em solid #ecb500;
 }
 
 .Header-search-bar{
@@ -30,10 +31,10 @@
     padding-right: 2em;
     font-size: 1em;
     box-sizing: border-box;
-    outline: #ff9f21;
+    outline: #ecb500;
 }
 .Header-search-bar-input:focus{
-    border: 0.13em solid #ff9f21;
+    border: 0.15em solid #ecb500;
 }
 
 .Header-search-bar-input::placeholder{

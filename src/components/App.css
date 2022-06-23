@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #ffffff;
+    background-color: #010101;
     overflow: hidden;
 }
 
@@ -33,7 +33,15 @@
 
 .App-back-to-home-button {
     position: absolute;
-    left: 10%;
+    font-size: 1.2em;
+    left: calc(0.1em - 2%);
+    width: calc(3em + 5%);
+    height: 2em;
+    border-radius: 0.5em;
+    border: none;
+    background-color: #ecb500;
+    color: #010;
+
 }
 
 .searchResults-text {
@@ -42,4 +50,38 @@
     align-self: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0.1em;
+    color: #fff;
+}
+
+.App-loadingScreen {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(46, 46, 46, 0.521);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.App-loadingScreen svg {
+    animation-name: loader;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
